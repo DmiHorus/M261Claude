@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Курс ЦБ РФ · Онлайн</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="page">
+
+  <header class="topbar">
+    <div class="topbar-title">
+      <h1>Курс ЦБ РФ</h1>
+      <p class="subtitle" id="asOf">Загрузка данных…</p>
+    </div>
+    <div class="topbar-status">
+      <span class="live-dot" id="liveDot"></span>
+      <span id="liveLabel">Подключение…</span>
+      <button id="themeToggle" class="theme-toggle" type="button" title="Переключить тему" aria-label="Переключить тему">🌓</button>
+    </div>
+  </header>
+
+  <section class="filter-row">
+    <input id="search" class="search-input" type="search" placeholder="Найти валюту по коду или названию…" aria-label="Поиск валюты">
+  </section>
+
+  <main class="content">
+    <section class="card table-card">
+      <table class="rates-table" aria-label="Курсы валют">
+        <thead>
+          <tr>
+            <th scope="col">Код</th>
+            <th scope="col">Валюта</th>
+            <th scope="col" class="num">Курс, ₽</th>
+            <th scope="col" class="num">Изменение за день</th>
+          </tr>
+        </thead>
+        <tbody id="ratesBody">
+          <tr><td colspan="4" class="empty-state">Загрузка курсов…</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="card chart-card">
+      <div class="chart-header">
+        <div>
+          <h2 id="chartTitle">Выберите валюту</h2>
+          <p class="chart-sub" id="chartSub">История курса, ₽ за единицу</p>
+        </div>
+        <div class="range-presets" id="rangePresets" role="group" aria-label="Период">
+          <button class="preset" data-days="7">7 дн.</button>
+          <button class="preset is-active" data-days="30">30 дн.</button>
+          <button class="preset" data-days="90">90 дн.</button>
+        </div>
+      </div>
+      <div class="chart-wrap">
+        <svg id="chart" class="chart-svg" viewBox="0 0 720 320" preserveAspectRatio="none"></svg>
+        <div id="tooltip" class="chart-tooltip" hidden></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="page-footer">
+    Источник данных: <a href="https://www.cbr.ru/development/SXML/" target="_blank" rel="noopener">Центральный банк РФ</a>.
+    Официальный курс обновляется ЦБ РФ раз в рабочий день; страница опрашивает сервер автоматически.
+  </footer>
+</div>
+
+<script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>

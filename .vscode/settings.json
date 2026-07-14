@@ -1,0 +1,11 @@
+{
+    "claudeCode.preferredLocation": "sidebar",
+    "workbench.activityBar.location": "hidden",
+    "workbench.statusBar.visible": false,
+    "chat.viewSessions.orientation": "stacked",
+    "workbench.sideBar.location": "left",
+    "workbench.panel.defaultLocation": "bottom",
+    "workbench.secondarySideBar.defaultVisibility": "hidden",
+    "workbench.editor.enablePreview": false,
+    "window.restoreWindows": "all"
+}
